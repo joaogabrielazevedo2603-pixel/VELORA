@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELORA — Sites profissionais que elevam negócios</title>
+<meta name="description" content="A VELORA cria sites profissionais, modernos e estratégicos para pequenas e médias empresas e profissionais.">
+<meta name="theme-color" content="#F7F7F5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 4l9 16 9-16' fill='none' stroke='%236C63FF' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --graphite: #111318;
+  --offwhite: #F7F7F5;
+  --accent: #6C63FF;
+  --gray: #70737A;
+  --line: rgba(17, 19, 24, .12);
+  --max: 1180px;
+  --pad: clamp(20px, 5vw, 48px);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* =========================
+   RESET
+========================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family: 'Montserrat', system-ui, sans-serif; line-height: 1.65; color: var(--graphite); background: var(--offwhite); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+svg { display: block; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* =========================
+   BASE / TIPOGRAFIA
+========================= */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(72px, 10vw, 128px) 0; }
+h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -.025em; }
+h1 { font-size: clamp(2.3rem, 5.2vw, 4rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 700; max-width: 20ch; }
+h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
+p { color: var(--gray); }
+strong { color: var(--graphite); font-weight: 600; }
+.accent { color: var(--accent); }
+.num { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
+.eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+.sub { max-width: 56ch; margin-top: 20px; }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 28px; border: 1px solid var(--graphite); border-radius: 4px; font-size: 14px; font-weight: 600; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease); }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--graphite); color: var(--offwhite); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm { padding: 10px 20px; font-size: 13px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Revelação suave (só ativa com JS) */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* =========================
+   HEADER
+========================= */
+.header { position: sticky; top: 0; z-index: 50; background: rgba(247, 247, 245, .88); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.header.scrolled { border-color: var(--line); }
+.header .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800; letter-spacing: .22em; }
+.nav { display: flex; align-items: center; gap: 32px; }
+.nav a:not(.btn) { font-size: 13px; font-weight: 600; color: var(--gray); transition: color .2s; }
+.nav a:not(.btn):hover { color: var(--graphite); }
+.burger { display: none; width: 40px; height: 40px; background: none; border: 0; cursor: pointer; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; }
+.burger span { width: 24px; height: 2px; background: var(--graphite); transition: transform .3s var(--ease), width .3s var(--ease); }
+.burger span + span { width: 16px; }
+.burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.burger[aria-expanded="true"] span + span { width: 24px; transform: translateY(-4px) rotate(-45deg); }
+
+/* =========================
+   HERO
+========================= */
+.hero { padding: clamp(48px, 8vw, 104px) 0 clamp(64px, 9vw, 112px); }
+.hero .container { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.hero .lead { max-width: 46ch; margin: 28px 0 40px; font-size: 1.05rem; }
+
+/* Mockup de navegador (hero e páginas de projeto) */
+.browser { background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 30px 60px -30px rgba(17, 19, 24, .28); overflow: hidden; }
+.bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.bar i { width: 8px; height: 8px; border-radius: 50%; background: #dcdcd8; }
+.bar em { flex: 1; max-width: 240px; margin-left: 14px; padding: 3px 12px; border-radius: 99px; background: var(--offwhite); font-size: 11px; font-style: normal; color: var(--gray); }
+.screen { display: grid; gap: 22px; padding: 28px; }
+.s-nav { display: flex; justify-content: space-between; align-items: center; }
+.s-nav b { font-size: 11px; letter-spacing: .2em; }
+.s-nav span { display: flex; gap: 10px; }
+.s-nav span i { width: 28px; height: 4px; border-radius: 2px; background: var(--line); }
+.screen h4 { font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 800; }
+.sk { display: block; height: 6px; margin-top: -10px; border-radius: 3px; background: var(--line); }
+.sk.w2 { width: 65%; }
+.s-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill { padding: 7px 16px; border: 1px solid var(--line); border-radius: 99px; font-size: 11px; font-weight: 600; }
+.pill.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.s-grid div { display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; height: 68px; padding: 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 10px; font-weight: 600; color: var(--gray); }
+.s-grid div::before { content: ""; width: 16px; height: 2px; background: var(--accent); }
+
+/* =========================
+   FAIXA DE BENEFÍCIOS
+========================= */
+.strip { border-block: 1px solid var(--line); }
+.strip ul { display: grid; grid-template-columns: repeat(4, 1fr); }
+.strip li { display: flex; align-items: center; gap: 14px; padding: 26px 0 26px 24px; font-size: 14px; font-weight: 600; }
+.strip li + li { border-left: 1px solid var(--line); }
+.strip li:first-child { padding-left: 0; }
+
+/* =========================
+   SEÇÕES DE CONTEÚDO
+========================= */
+.why { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(32px, 7vw, 96px); }
+.why p + p { margin-top: 18px; }
+.why .formula { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 32px 0; }
+.formula span { padding: 8px 16px; border: 1px solid var(--line); border-radius: 99px; font-size: 13px; font-weight: 600; color: var(--graphite); }
+.formula i { font-style: normal; color: var(--gray); }
+.formula .on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 40px; margin-top: 64px; }
+.grid-3 li { padding-top: 24px; border-top: 1px solid var(--line); transition: border-color .3s; }
+.grid-3 li:hover { border-color: var(--accent); }
+.grid-3 h3 { margin: 14px 0 8px; }
+
+/* Serviços */
+.list { margin-top: 56px; border-bottom: 1px solid var(--line); }
+.svc { display: grid; grid-template-columns: 64px 1fr 1.3fr 24px; gap: 24px; align-items: baseline; padding: 32px 0; border-top: 1px solid var(--line); transition: padding .3s var(--ease); }
+.svc:hover { padding-left: 12px; }
+.svc h3 { font-size: 1.35rem; }
+.svc .go { color: var(--accent); opacity: 0; transform: translateX(-8px); transition: opacity .3s, transform .3s var(--ease); }
+.svc:hover .go { opacity: 1; transform: none; }
+
+/* Processo */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 64px; }
+.step { position: relative; padding-top: 28px; border-top: 1px solid var(--line); }
+.step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.step h3 { margin: 12px 0 8px; }
+
+/* =========================
+   PROJETOS
+========================= */
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+.thumb { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; }
+.proj .mock { transition: transform .7s var(--ease); }
+.proj:hover .mock { transform: scale(1.04); }
+.p-meta { padding-top: 18px; }
+.p-meta small { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.p-meta h3 { margin: 6px 0 2px; font-size: 1.3rem; }
+
+/* Mockup temático (miniatura e versão grande) */
+.mock { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; aspect-ratio: 4 / 3; padding: clamp(18px, 3vw, 30px); background: var(--mbg); color: var(--mfg); }
+.mock::before { content: ""; position: absolute; top: 22px; left: 26px; width: 56px; height: 5px; background: var(--mac); }
+.mock b { max-width: 13ch; font-size: clamp(1.15rem, 2vw, 1.6rem); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+.m-btn { width: 90px; height: 26px; background: var(--mac); border-radius: 2px; }
+.t-adv { --mbg: #14161C; --mfg: #F1ECE2; --mac: #B9A27A; }
+.t-odo { --mbg: #EAF4F2; --mfg: #123A3A; --mac: #2FA39A; }
+.t-eng { --mbg: #EEF1F6; --mfg: #0F1B33; --mac: #2F5BFF; }
+.mock.big { justify-content: space-between; aspect-ratio: 16 / 9; padding: clamp(20px, 4vw, 48px); }
+.mock.big::before { display: none; }
+.mock.big b { max-width: 14ch; font-size: clamp(1.6rem, 4.6vw, 3.6rem); }
+.m-top { display: flex; justify-content: space-between; align-items: center; }
+.m-top small { font-size: clamp(9px, 1.2vw, 12px); font-weight: 700; letter-spacing: .2em; }
+.m-links { display: flex; gap: 10px; }
+.m-links i { width: 28px; height: 3px; background: var(--mac); opacity: .5; }
+.m-main { display: grid; gap: 22px; }
+.m-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.m-row em { padding-top: 12px; border-top: 1px solid var(--mac); font-size: clamp(9px, 1.2vw, 13px); font-style: normal; font-weight: 600; }
+
+/* Páginas de projeto */
+.p-head { padding-top: clamp(40px, 7vw, 88px); padding-bottom: clamp(36px, 5vw, 56px); }
+.back { font-size: 13px; font-weight: 600; color: var(--gray); transition: color .2s; }
+.back:hover { color: var(--accent); }
+.badge { display: inline-flex; align-items: center; gap: 10px; margin: 32px 0 20px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 99px; font-size: 12px; font-weight: 600; color: var(--graphite); }
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.p-head .lead { max-width: 52ch; margin: 22px 0 26px; font-size: 1.1rem; }
+.note { max-width: 56ch; padding-left: 14px; border-left: 2px solid var(--accent); font-size: 13px; }
+.points li { padding: 22px 0; border-top: 1px solid var(--line); }
+.points li:last-child { border-bottom: 1px solid var(--line); }
+.points h3 { margin-bottom: 6px; }
+
+/* =========================
+   PLANOS
+========================= */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 56px; border: 1px solid var(--line); }
+.plan { display: flex; flex-direction: column; gap: 22px; padding: 40px 32px; }
+.plan + .plan { border-left: 1px solid var(--line); }
+.plan.featured { background: var(--graphite); color: var(--offwhite); }
+.plan.featured p, .plan.featured li { color: #B4B7BE; }
+.plan.featured .btn { background: var(--offwhite); border-color: var(--offwhite); color: var(--graphite); }
+.plan.featured .btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.plan h3 { display: flex; justify-content: space-between; align-items: center; font-size: 13px; letter-spacing: .16em; }
+.plan h3 small { font-size: 11px; letter-spacing: .04em; color: var(--accent); }
+.price { font-size: 2.3rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.price small { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--gray); }
+.plan ul { display: grid; gap: 10px; flex: 1; }
+.plan li { position: relative; padding-left: 20px; font-size: 14px; color: var(--gray); }
+.plan li::before { content: ""; position: absolute; left: 0; top: .75em; width: 10px; height: 1px; background: var(--accent); }
+.terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.terms strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.terms p { font-size: 14px; }
+
+/* =========================
+   CTA
+========================= */
+.cta { background: var(--graphite); color: var(--offwhite); }
+.cta .eyebrow { color: #9A9DA5; }
+.cta h2 { max-width: 22ch; font-size: clamp(1.9rem, 4.4vw, 3.4rem); }
+.cta .accent { color: #8B84FF; }
+.cta .actions { margin-top: 44px; align-items: center; gap: 28px; }
+.cta .btn-primary { background: var(--offwhite); border-color: var(--offwhite); color: var(--graphite); }
+.cta .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cta .next { font-size: 13px; font-weight: 600; color: #9A9DA5; transition: color .2s; }
+.cta .next:hover { color: #fff; }
+
+/* =========================
+   FOOTER
+========================= */
+.footer { background: var(--graphite); color: var(--offwhite); border-top: 1px solid rgba(255, 255, 255, .1); }
+.footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px; padding-block: 36px; }
+.footer p { font-size: 13px; color: #9A9DA5; }
+.footer .logo { margin-right: 8px; }
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 960px) {
+  .hero .container, .why { grid-template-columns: 1fr; }
+  .grid-3, .projects, .steps { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
+  .plan + .plan { border-left: 0; border-top: 1px solid var(--line); }
+  .svc { grid-template-columns: 48px 1fr; gap: 8px 16px; }
+  .svc p { grid-column: 2; }
+  .svc .go { display: none; }
+}
+
+@media (max-width: 720px) {
+  .burger { display: flex; }
+  .nav { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad) 24px; background: var(--offwhite); border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .nav .btn { margin-top: 20px; }
+  .hero { padding-top: 36px; }
+  .actions .btn { width: 100%; }
+  .screen { padding: 20px; }
+  .strip ul { grid-template-columns: repeat(2, 1fr); }
+  .strip li { padding-left: 16px; }
+  .strip li:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .strip li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .grid-3, .projects, .steps, .terms { grid-template-columns: 1fr; }
+  .grid-3 { gap: 36px; margin-top: 40px; }
+  .steps { gap: 0; margin-top: 40px; padding-left: 20px; border-left: 1px solid var(--line); }
+  .step { padding: 0 0 36px; border-top: 0; }
+  .step::before { top: 6px; left: -24px; }
+  .plan { padding: 32px 24px; }
+  .mock.big { aspect-ratio: 4 / 5; }
+  .cta .actions { flex-direction: column; align-items: stretch; gap: 20px; }
+  .cta .next { text-align: center; }
+  .footer .container { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a class="logo" href="#topo" aria-label="VELORA">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"><path d="M3 4l9 16 9-16"/><path d="M12 12l4.5-8" stroke="#6C63FF"/></svg>VELORA
+    </a>
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#porque">Por que ter um site?</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#planos">Planos</a>
+      <a class="btn btn-primary btn-sm" data-wa href="https://wa.me/5512991784230">Falar conosco</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Agência digital</p>
+        <h1>Sua empresa merece uma <span class="accent">presença digital à altura.</span></h1>
+        <p class="lead">Criamos sites profissionais, modernos e estratégicos para empresas que querem transmitir confiança e facilitar o contato com seus clientes.</p>
+        <div class="actions">
+          <a class="btn btn-primary" data-wa="Olá! Quero meu site." href="https://wa.me/5512991784230">Quero meu site</a>
+          <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+        </div>
+      </div>
+      <div class="browser reveal" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><em>suaempresa.com.br</em></div>
+        <div class="screen">
+          <div class="s-nav"><b>SUA EMPRESA</b><span><i></i><i></i><i></i></span></div>
+          <h4>Seu negócio, <span class="accent">em destaque.</span></h4>
+          <i class="sk"></i><i class="sk w2"></i>
+          <div class="s-row"><span class="pill on">Falar no WhatsApp</span><span class="pill">Ver serviços</span></div>
+          <div class="s-grid"><div>Serviços</div><div>Localização</div><div>Contato</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS RÁPIDOS -->
+  <div class="strip">
+    <div class="container">
+      <ul>
+        <li><span class="num">01</span>Credibilidade</li>
+        <li><span class="num">02</span>Visibilidade</li>
+        <li><span class="num">03</span>Contato fácil</li>
+        <li><span class="num">04</span>Presença 24h</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- POR QUE TER UM SITE -->
+  <section class="section" id="porque">
+    <div class="container why">
+      <div class="reveal">
+        <p class="eyebrow">Por que ter um site?</p>
+        <h2>Seu negócio não deveria depender apenas das redes sociais.</h2>
+      </div>
+      <div class="reveal">
+        <p>Quando alguém conhece uma empresa, é comum pesquisar por ela antes de entrar em contato. Um site próprio reúne informações importantes em um único lugar e passa uma imagem mais profissional.</p>
+        <p>Instagram, WhatsApp e Google continuam importantes. O site funciona como a sua <strong>casa digital</strong>: um espaço próprio para apresentar sua empresa, seus serviços e a melhor forma de falar com você.</p>
+        <p class="formula"><span>Redes sociais</span><i>+</i><span>Google</span><i>+</i><span>WhatsApp</span><i>+</i><span class="on">Site próprio</span></p>
+        <p>Cada canal tem o seu papel, e todos funcionam melhor juntos. O site é o espaço oficial da empresa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE MUDA -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">O que muda</p>
+        <h2>Uma presença digital pensada para o seu negócio.</h2>
+      </div>
+      <ul class="grid-3">
+        <li class="reveal"><span class="num">01</span><h3>Mais confiança</h3><p>Apresente sua empresa de forma organizada e profissional.</p></li>
+        <li class="reveal"><span class="num">02</span><h3>Mais visibilidade</h3><p>Tenha um endereço próprio para ser encontrado no Google.</p></li>
+        <li class="reveal"><span class="num">03</span><h3>Informação clara</h3><p>Serviços, localização, contatos e diferenciais em um só lugar.</p></li>
+        <li class="reveal"><span class="num">04</span><h3>Contato rápido</h3><p>Botões estratégicos levam o visitante direto para o WhatsApp.</p></li>
+        <li class="reveal"><span class="num">05</span><h3>Disponível 24h</h3><p>Seu negócio continua apresentando informações mesmo fora do horário comercial.</p></li>
+        <li class="reveal"><span class="num">06</span><h3>Seu espaço</h3><p>Uma presença digital própria, sem depender de uma única plataforma.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Serviços</p>
+        <h2>Do essencial ao totalmente personalizado.</h2>
+      </div>
+      <div class="list reveal">
+        <a class="svc" data-wa="Olá! Quero saber mais sobre site institucional." href="https://wa.me/5512991784230"><span class="num">01</span><h3>Site institucional</h3><p>Uma apresentação completa da empresa, serviços, localização e contatos.</p><span class="go">→</span></a>
+        <a class="svc" data-wa="Olá! Quero saber mais sobre landing page." href="https://wa.me/5512991784230"><span class="num">02</span><h3>Landing page</h3><p>Uma página focada em apresentar uma oferta e gerar contatos.</p><span class="go">→</span></a>
+        <a class="svc" data-wa="Olá! Quero saber mais sobre manutenção de site." href="https://wa.me/5512991784230"><span class="num">03</span><h3>Manutenção</h3><p>Atualizações, ajustes e suporte para manter o site funcionando bem.</p><span class="go">→</span></a>
+        <a class="svc" data-wa="Olá! Quero saber mais sobre SEO básico." href="https://wa.me/5512991784230"><span class="num">04</span><h3>SEO básico</h3><p>Estrutura inicial para facilitar a descoberta do site nos mecanismos de busca.</p><span class="go">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section" id="processo" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Processo</p>
+        <h2>Simples, direto e sem complicação.</h2>
+      </div>
+      <ol class="steps reveal" style="list-style:none">
+        <li class="step"><span class="num">01</span><h3>Conversa</h3><p>Entendemos sua empresa, público e objetivo.</p></li>
+        <li class="step"><span class="num">02</span><h3>Estratégia</h3><p>Definimos estrutura, conteúdo e direção visual.</p></li>
+        <li class="step"><span class="num">03</span><h3>Desenvolvimento</h3><p>Criamos o site e ajustamos cada detalhe.</p></li>
+        <li class="step"><span class="num">04</span><h3>Publicação</h3><p>Colocamos seu projeto no ar e entregamos tudo pronto.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="section" id="projetos" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Projetos</p>
+        <h2>Veja como podemos apresentar diferentes negócios.</h2>
+        <p class="sub">Os exemplos abaixo são demonstrações criadas pela VELORA para mostrar possibilidades de projeto.</p>
+      </div>
+      <div class="projects">
+        <a class="proj reveal" href="almeida-e-torres.html">
+          <div class="thumb"><div class="mock t-adv"><b>Advocacia Empresarial</b><span class="m-btn"></span></div></div>
+          <div class="p-meta"><small>Advocacia</small><h3>Almeida &amp; Torres</h3><p>Institucional premium</p></div>
+        </a>
+        <a class="proj reveal" href="vitta-odontologia.html">
+          <div class="thumb"><div class="mock t-odo"><b>Seu sorriso, nosso cuidado.</b><span class="m-btn"></span></div></div>
+          <div class="p-meta"><small>Odontologia</small><h3>Vitta Odontologia</h3><p>Site institucional</p></div>
+        </a>
+        <a class="proj reveal" href="axis-engenharia.html">
+          <div class="thumb"><div class="mock t-eng"><b>Projetos que movem ideias.</b><span class="m-btn"></span></div></div>
+          <div class="p-meta"><small>Engenharia</small><h3>Axis Engenharia</h3><p>Apresentação corporativa</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="section" id="planos" style="padding-top:0">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Planos</p>
+        <h2>Valores claros para cada momento da sua empresa.</h2>
+        <p class="sub">Cada projeto começa com uma conversa para entender o que faz sentido para você.</p>
+      </div>
+      <div class="plans reveal">
+        <div class="plan">
+          <h3>START</h3>
+          <div class="price"><small>Valor</small>R$ 900</div>
+          <ul><li>Até 4 páginas</li><li>Design responsivo</li><li>Botão de WhatsApp</li><li>Formulário de contato</li><li>Google Maps</li><li>Links sociais</li><li>Publicação</li></ul>
+          <a class="btn btn-ghost" data-wa="Olá! Quero saber mais sobre o plano START." href="https://wa.me/5512991784230">Quero o START</a>
+        </div>
+        <div class="plan featured">
+          <h3>PRO <small>Recomendado</small></h3>
+          <div class="price"><small>Valor</small>R$ 1.500</div>
+          <ul><li>Até 8 páginas</li><li>Design personalizado</li><li>WhatsApp e formulários</li><li>Portfólio</li><li>FAQ</li><li>SEO básico</li><li>Google Analytics</li><li>Otimização mobile</li></ul>
+          <a class="btn" data-wa="Olá! Quero saber mais sobre o plano PRO." href="https://wa.me/5512991784230">Quero o PRO</a>
+        </div>
+        <div class="plan">
+          <h3>CUSTOM</h3>
+          <div class="price"><small>A partir de</small>R$ 2.500</div>
+          <ul><li>Estrutura personalizada</li><li>Funcionalidades específicas</li><li>Integrações</li><li>SEO avançado</li><li>Copywriting</li><li>Mais páginas</li></ul>
+          <a class="btn btn-ghost" data-wa="Olá! Quero um orçamento para um projeto CUSTOM." href="https://wa.me/5512991784230">Pedir orçamento</a>
+        </div>
+      </div>
+      <div class="terms reveal">
+        <div><strong>Manutenção (opcional)</strong><p>A partir de R$ 100/mês.</p></div>
+        <div><strong>Pagamento</strong><p>50% na contratação e 50% na entrega.</p></div>
+        <div><strong>Prazo</strong><p>7–15 dias úteis, conforme o projeto e o envio dos materiais.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta section">
+    <div class="container reveal">
+      <p class="eyebrow">Vamos conversar?</p>
+      <h2>Seu negócio já existe.<br><span class="accent">Agora ele precisa de uma presença digital à altura.</span></h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://wa.me/5512991784230" target="_blank" rel="noopener">Falar com a VELORA →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div><span class="logo">VELORA</span><p style="display:inline">Sites profissionais que elevam negócios.</p></div>
+    <p>© 2026 VELORA. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+/* VELORA — interações */
+document.documentElement.classList.add('js');
+
+/* WhatsApp: cada botão [data-wa] abre a conversa com uma mensagem pronta */
+const WA = 'https://wa.me/5512991784230';
+document.querySelectorAll('[data-wa]').forEach(a => {
+  const msg = a.dataset.wa || 'Olá! Vim pelo site da VELORA e quero saber mais.';
+  a.href = `${WA}?text=${encodeURIComponent(msg)}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+
+/* Header: linha sutil ao rolar */
+const header = document.querySelector('.header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* Menu mobile */
+const burger = document.querySelector('.burger');
+const nav = document.getElementById('nav');
+const setMenu = open => {
+  nav.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+};
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+
+/* Revelação suave ao rolar */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
