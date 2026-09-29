@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axis Engenharia — Engenharia e Projetos</title>
+<meta name="description" content="Engenharia que transforma complexidade em soluções. Projeto conceitual desenvolvido pela VELORA.">
+<meta property="og:title" content="Axis Engenharia — Engenharia e Projetos">
+<meta property="og:description" content="Engenharia que transforma complexidade em soluções. Projeto conceitual da VELORA.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171A1F'/%3E%3Cpath d='M6 26L16 6l10 20M10 20h12' fill='none' stroke='%23315C78' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --graphite: #171A1F; --concrete: #E7E7E3; --white: #FAFAF8; --blue: #315C78; --steel: #6E7478;
+  --line: rgba(23, 26, 31, .14); --pad: clamp(20px, 5vw, 64px);
+}
+
+/* =========================
+   RESET E BASE
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { font: 400 16px/1.65 'Inter', system-ui, sans-serif; background: var(--white); color: var(--graphite); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+p { max-width: 56ch; color: #4D5257; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) var(--pad); }
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-height: 1.04; letter-spacing: -.03em; }
+h1 { max-width: 15ch; font-size: clamp(2.6rem, 6.4vw, 5.4rem); }
+h2 { max-width: 20ch; font-size: clamp(1.9rem, 4vw, 3.2rem); }
+.code { display: block; margin-bottom: 20px; font: 500 12px 'Space Grotesk'; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.ph { background: var(--img, none) center / cover no-repeat, var(--fb); }
+.btn { display: inline-block; padding: 15px 28px; border: 1px solid currentColor; font-size: 14px; font-weight: 500; transition: background .3s, color .3s, border-color .3s; }
+.btn.solid { background: var(--blue); border-color: var(--blue); color: #fff; }
+.btn:hover { background: var(--graphite); border-color: var(--graphite); color: #fff; }
+
+/* =========================
+   TOPO E NAVEGAÇÃO
+========================= */
+.demo { padding: 8px var(--pad); background: var(--graphite); font-size: 12px; color: #A0A5A9; text-align: center; }
+.demo a { margin-left: 12px; color: #fff; text-decoration: underline; }
+.top { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 72px; padding: 0 var(--pad); background: rgba(250, 250, 248, .94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.logo { font: 700 1.15rem 'Space Grotesk'; letter-spacing: .14em; }
+.logo i { color: var(--blue); font-style: normal; }
+.nav { display: flex; align-items: center; gap: 32px; font-size: 14px; }
+.nav a:not(.btn):hover { color: var(--blue); }
+.nav .btn { padding: 10px 22px; font-size: 13px; }
+.burger { display: none; padding: 10px; background: none; border: 0; color: inherit; font: 500 14px 'Inter'; cursor: pointer; }
+
+/* =========================
+   HERO E FAIXA
+========================= */
+.hero { position: relative; display: flex; align-items: flex-end; min-height: calc(100svh - 106px); overflow: hidden; color: #fff; }
+.hero .ph { position: absolute; inset: 0; animation: zoom 20s ease-out both;
+  --fb: repeating-linear-gradient(0deg, rgba(255, 255, 255, .07) 0 1px, transparent 1px 56px), repeating-linear-gradient(90deg, rgba(255, 255, 255, .07) 0 1px, transparent 1px 56px), linear-gradient(135deg, #171A1F 30%, #315C78); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 26, 31, .25), rgba(23, 26, 31, .82)); }
+.hero .wrap { position: relative; z-index: 1; width: 100%; padding-block: 64px 80px; }
+.hero .wrap > * { animation: up .9s both; }
+.hero .wrap > :nth-child(2) { animation-delay: .12s; }
+.hero .wrap > :nth-child(3) { animation-delay: .24s; }
+.hero .wrap > :nth-child(4) { animation-delay: .36s; }
+.hero .code { color: #B8D2E3; }
+.hero p { margin: 24px 0 36px; font-size: 1.1rem; color: #DADDDF; }
+.hero .btn + .btn { margin-left: 10px; }
+@keyframes up { from { opacity: 0; transform: translateY(16px); } }
+@keyframes zoom { from { transform: scale(1.06); } }
+.bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--concrete); }
+.bar li { padding: 24px var(--pad); border-left: 3px solid var(--blue); font: 500 15px 'Space Grotesk'; }
+
+/* =========================
+   SEÇÕES
+========================= */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 7vw, 110px); align-items: end; }
+.about ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin-top: 32px; }
+.about li { padding: 14px 0; border-top: 1px solid var(--line); font: 500 15px 'Space Grotesk'; }
+.areas { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 56px; border-top: 1px solid var(--line); }
+.areas li { padding: 32px 28px 40px 0; border-bottom: 1px solid var(--line); transition: background .3s; }
+.areas li:hover { background: var(--concrete); }
+.areas h3 { margin-top: 32px; font-size: 1.4rem; }
+.areas span { font: 500 12px 'Space Grotesk'; color: var(--blue); }
+.gray { background: var(--concrete); }
+.case { margin-top: 32px; border-top: 1px solid var(--line); }
+.case summary { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: end; padding-top: 32px; cursor: pointer; list-style: none; }
+.case summary::-webkit-details-marker { display: none; }
+.case .ph { display: block; aspect-ratio: 16 / 9; overflow: hidden; background-size: 100%; transition: background-size .8s; }
+.case summary:hover .ph { background-size: 106%; }
+.case .info { display: block; padding-bottom: 8px; }
+.case h3 { font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.case .info span { display: block; margin-top: 10px; font-size: 14px; color: var(--steel); }
+.case .info b { display: inline-block; margin-top: 22px; font: 500 13px 'Space Grotesk'; color: var(--blue); }
+.case[open] .info b::after { content: " — fechar"; }
+.case:not([open]) .info b::after { content: " — ver estudo"; }
+.case .body { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 40px 0 8px; }
+.case .body h4 { margin-bottom: 8px; font: 600 13px 'Space Grotesk'; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+.case .body p { font-size: 14px; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 64px; counter-reset: f; }
+.flow li { position: relative; padding-top: 28px; border-top: 2px solid var(--graphite); font: 600 1.25rem 'Space Grotesk'; }
+.flow li::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; background: var(--blue); }
+.flow li::after { counter-increment: f; content: "0" counter(f); display: block; margin-top: 6px; font: 500 12px 'Inter'; color: var(--steel); }
+.tech { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.tech li { padding: 9px 18px; border: 1px solid var(--line); font-size: 14px; }
+.cta { background: var(--graphite); color: #fff; }
+.cta p { margin-top: 20px; color: #A9AEB2; }
+.cta .btn { margin-top: 36px; }
+.cta .code { color: #8DB6D1; }
+
+/* =========================
+   FOOTER
+========================= */
+.foot { background: #0F1114; color: #fff; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; padding-block: 52px; }
+.foot p { font-size: 13px; color: #A9AEB2; }
+.foot ul { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; }
+.foot a:hover { color: #8DB6D1; }
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 900px) {
+  .burger { display: block; }
+  .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad) 28px; background: var(--white); border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .nav .btn { margin-top: 20px; text-align: center; }
+  .hero .btn { display: block; margin: 0 0 10px; text-align: center; }
+  .hero .btn + .btn { margin-left: 0; }
+  .bar, .about, .areas, .case summary, .case .body { grid-template-columns: 1fr 1fr; }
+  .about, .case summary { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 560px) {
+  .bar, .areas, .case .body, .about ul { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+
+</head>
+<body id="topo">
+
+<div class="demo">Projeto conceitual · Demonstração VELORA · Os botões de contato levam à VELORA <a href="velora.html#projetos">← Voltar ao portfólio</a></div>
+
+<header class="top">
+  <a class="logo" href="#topo">AXIS<i>.</i></a>
+  <button class="burger" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav">
+    <a href="#empresa">Empresa</a><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#capacidade">Capacidade</a>
+    <a class="btn solid" data-wa href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="ph" style="--img:url(imagens/axis-hero.jpg)" role="img" aria-label="Vista aérea de uma estrutura em construção"></div>
+    <div class="wrap">
+      <span class="code">Engenharia · Projetos · Consultoria</span>
+      <h1>Projetos que transformam ideias em realidade.</h1>
+      <p>Engenharia, planejamento e soluções técnicas para projetos que exigem precisão.</p>
+      <div><a class="btn solid" href="#projetos">Conheça nossos projetos</a><a class="btn" data-wa href="#contato">Fale com a Axis</a></div>
+    </div>
+  </section>
+
+  <ul class="bar"><li>Projetos</li><li>Engenharia</li><li>Planejamento</li><li>Consultoria</li></ul>
+
+  <section id="empresa">
+    <div class="wrap about">
+      <div>
+        <span class="code">Empresa</span>
+        <h2>Engenharia precisa ser precisa antes mesmo de sair do papel.</h2>
+      </div>
+      <div>
+        <p>A Axis combina conhecimento técnico, planejamento e visão de projeto para transformar desafios complexos em soluções claras e executáveis.</p>
+        <ul><li>Planejamento</li><li>Execução</li><li>Precisão</li><li>Eficiência</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="gray" id="servicos">
+    <div class="wrap">
+      <span class="code">Áreas de atuação · Exemplos conceituais</span>
+      <h2>Do primeiro traço à coordenação técnica.</h2>
+      <ul class="areas">
+        <li><span>A-01</span><h3>Projetos de Engenharia</h3></li>
+        <li><span>A-02</span><h3>Engenharia Estrutural</h3></li>
+        <li><span>A-03</span><h3>Instalações</h3></li>
+        <li><span>A-04</span><h3>Consultoria Técnica</h3></li>
+        <li><span>A-05</span><h3>Planejamento</h3></li>
+        <li><span>A-06</span><h3>Gerenciamento de Projetos</h3></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="wrap">
+      <span class="code">Projetos conceituais</span>
+      <h2>Projetos que mostram como pensamos.</h2>
+
+      <details class="case">
+        <summary>
+          <span class="ph" style="--img:url(imagens/axis-aurora.jpg);--fb:linear-gradient(135deg,#2A3036,#6E7478)" role="img" aria-label="Grande estrutura industrial metálica"></span>
+          <span class="info"><span class="code">Projeto conceitual</span><h3>Complexo Industrial Aurora</h3><span>Projeto industrial conceitual.</span><b>Estudo de caso</b></span>
+        </summary>
+        <div class="body">
+          <div><h4>Desafio</h4><p>Organizar fluxos de produção, estrutura e instalações em um único complexo industrial.</p></div>
+          <div><h4>Abordagem</h4><p>Análise das operações antes do desenho, com as disciplinas coordenadas desde o início.</p></div>
+          <div><h4>Solução</h4><p>Projeto estruturado por módulos, com documentação clara para cada etapa.</p></div>
+          <div><h4>Resultado conceitual</h4><p>Busca oferecer previsibilidade e facilidade de expansão. Demonstração VELORA.</p></div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="ph" style="--img:url(imagens/axis-axis-one.jpg);--fb:linear-gradient(135deg,#315C78,#C9D4DB)" role="img" aria-label="Edifício residencial de arquitetura contemporânea"></span>
+          <span class="info"><span class="code">Projeto conceitual</span><h3>Residencial Axis One</h3><span>Edificação residencial conceitual.</span><b>Estudo de caso</b></span>
+        </summary>
+        <div class="body">
+          <div><h4>Desafio</h4><p>Conciliar uma arquitetura contemporânea com uma estrutura eficiente e instalações bem integradas.</p></div>
+          <div><h4>Abordagem</h4><p>Compatibilização entre estrutura, instalações e arquitetura desde as primeiras definições.</p></div>
+          <div><h4>Solução</h4><p>Projeto coordenado, com decisões técnicas documentadas e fáceis de acompanhar.</p></div>
+          <div><h4>Resultado conceitual</h4><p>Busca reduzir retrabalho e dar clareza à execução. Demonstração VELORA.</p></div>
+        </div>
+      </details>
+
+      <details class="case">
+        <summary>
+          <span class="ph" style="--img:url(imagens/axis-logistico.jpg);--fb:linear-gradient(135deg,#171A1F,#6E7478)" role="img" aria-label="Galpão logístico com áreas de circulação e operação"></span>
+          <span class="info"><span class="code">Projeto conceitual</span><h3>Centro Logístico Norte</h3><span>Infraestrutura e logística conceitual.</span><b>Estudo de caso</b></span>
+        </summary>
+        <div class="body">
+          <div><h4>Desafio</h4><p>Planejar circulação, estrutura e operação de um galpão com grande movimentação.</p></div>
+          <div><h4>Abordagem</h4><p>Estudo dos fluxos de veículos e mercadorias para orientar a implantação.</p></div>
+          <div><h4>Solução</h4><p>Layout pensado para a operação, com estrutura e infraestrutura coordenadas.</p></div>
+          <div><h4>Resultado conceitual</h4><p>Busca facilitar a operação diária e futuras ampliações. Demonstração VELORA.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="gray" id="capacidade">
+    <div class="wrap">
+      <span class="code">Capacidade técnica</span>
+      <h2>Da primeira linha ao projeto completo.</h2>
+      <ol class="flow"><li>Análise</li><li>Planejamento</li><li>Projeto</li><li>Coordenação</li><li>Entrega</li></ol>
+      <h2 style="margin-top:96px">Tecnologia a serviço da precisão.</h2>
+      <ul class="tech"><li>Modelagem</li><li>Documentação</li><li>Análise</li><li>Planejamento</li><li>Coordenação</li><li>Acompanhamento</li></ul>
+    </div>
+  </section>
+
+  <section class="cta" id="contato">
+    <div class="wrap">
+      <span class="code">Contato</span>
+      <h2>Tem um projeto pela frente?</h2>
+      <p>Vamos transformar a complexidade em uma solução clara.</p>
+      <a class="btn solid" data-wa href="#contato">Falar com a Axis</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><a class="logo" href="#topo">AXIS<i>.</i> ENGENHARIA</a><p>Projetos que movem ideias.</p></div>
+    <ul><li><a href="#empresa">Empresa</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#capacidade">Capacidade</a></li><li><a href="#contato">Contato</a></li></ul>
+    <p>Projeto conceitual desenvolvido pela <a href="velora.html">VELORA</a>.</p>
+  </div>
+</footer>
+
+<script>
+/* Contatos da demonstração levam ao WhatsApp da VELORA */
+const nome = document.title.split(' — ')[0];
+const msg = `Olá! Vi o projeto conceitual ${nome} e quero um site assim.`;
+document.querySelectorAll('[data-wa]').forEach(a => {
+  a.href = `https://wa.me/5512991784230?text=${encodeURIComponent(msg)}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+
+/* Menu mobile */
+const burger = document.querySelector('.burger');
+const nav = document.getElementById('nav');
+const setMenu = open => {
+  nav.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+};
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+</script>
+</body>
+</html>

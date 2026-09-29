@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almeida &amp; Torres — Advocacia Empresarial</title>
+<meta name="description" content="Advocacia estratégica para empresas que precisam tomar decisões com segurança. Projeto conceitual desenvolvido pela VELORA.">
+<meta property="og:title" content="Almeida &amp; Torres — Advocacia Empresarial">
+<meta property="og:description" content="Advocacia estratégica para decisões empresariais. Projeto conceitual da VELORA.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23182536'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23B79A63' font-family='serif'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --graphite: #17191D; --off: #F2EFE8; --navy: #182536; --gold: #B79A63; --gray: #777873;
+  --line: rgba(242, 239, 232, .16); --pad: clamp(20px, 5vw, 64px);
+}
+
+/* =========================
+   RESET E BASE
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { font: 400 16px/1.7 'Inter', system-ui, sans-serif; background: var(--graphite); color: var(--off); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+p { max-width: 56ch; color: #B9B7B0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 1360px; margin: 0 auto; padding: clamp(80px, 11vw, 150px) var(--pad); }
+.light { background: var(--off); color: var(--graphite); }
+.light p { color: #5D5E5A; }
+.navy { background: var(--navy); }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.05; }
+h1 { max-width: 13ch; font-size: clamp(2.8rem, 7vw, 6rem); }
+h2 { max-width: 16ch; font-size: clamp(2rem, 4.4vw, 3.5rem); }
+.label { display: block; margin-bottom: 24px; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+.light .label { color: #8A6F3D; }
+.ph { background: var(--img, none) center / cover no-repeat, var(--fb); }
+.btn { display: inline-block; padding: 16px 30px; border: 1px solid var(--gold); font-size: 13px; font-weight: 500; letter-spacing: .06em; transition: background .3s, color .3s; }
+.btn.solid { background: var(--gold); color: var(--graphite); }
+.btn:hover { background: var(--off); border-color: var(--off); color: var(--graphite); }
+
+/* =========================
+   TOPO E NAVEGAÇÃO
+========================= */
+.demo { padding: 8px var(--pad); background: #0E1013; font-size: 12px; color: #9A9A94; text-align: center; }
+.demo a { margin-left: 12px; color: var(--gold); }
+.top { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 76px; padding: 0 var(--pad); background: rgba(23, 25, 29, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; letter-spacing: .04em; }
+.logo i { color: var(--gold); }
+.nav { display: flex; align-items: center; gap: 36px; font-size: 13px; }
+.nav a:not(.btn):hover { color: var(--gold); }
+.nav .btn { padding: 10px 22px; }
+.burger { display: none; padding: 10px; background: none; border: 0; color: inherit; font: 500 13px 'Inter'; cursor: pointer; }
+
+/* =========================
+   HERO E FAIXA
+========================= */
+.hero { position: relative; display: flex; align-items: flex-end; min-height: calc(100svh - 110px); overflow: hidden; }
+.hero .ph { position: absolute; inset: 0; --fb: linear-gradient(115deg, #0E1620, #1D2A3B 55%, #2A2F36); animation: zoom 20s ease-out both; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 25, 29, .2), rgba(23, 25, 29, .88)); }
+.hero .wrap { position: relative; z-index: 1; width: 100%; padding-block: 64px 80px; }
+.hero .wrap > * { animation: up 1s both; }
+.hero .wrap > :nth-child(2) { animation-delay: .15s; }
+.hero .wrap > :nth-child(3) { animation-delay: .3s; }
+.hero .wrap > :nth-child(4) { animation-delay: .45s; }
+.hero p { margin: 28px 0 40px; font-size: 1.1rem; color: #D5D2CA; }
+.hero .btn + .btn { margin-left: 12px; }
+@keyframes up { from { opacity: 0; transform: translateY(18px); } }
+@keyframes zoom { from { transform: scale(1.07); } }
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); }
+.pillars li { padding: 36px var(--pad); border-right: 1px solid var(--line); }
+.pillars li:last-child { border: 0; }
+.pillars h3 { font-size: 1.8rem; color: var(--gold); }
+.pillars p { font-size: 14px; }
+
+/* =========================
+   SEÇÕES
+========================= */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 110px); align-items: center; }
+.split p { margin-top: 24px; }
+.split .ph { aspect-ratio: 4 / 5; --fb: linear-gradient(160deg, #D8D2C3, #8C8676); }
+.areas { margin-top: 64px; }
+.areas li { display: grid; grid-template-columns: 80px 1fr 1.2fr; gap: 24px; align-items: baseline; padding: 28px 0; border-top: 1px solid var(--line); transition: padding .4s; }
+.areas li:last-child { border-bottom: 1px solid var(--line); }
+.areas li:hover { padding-left: 16px; }
+.areas span { font-size: 12px; color: var(--gold); }
+.areas h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 64px; counter-reset: s; }
+.steps li { padding-top: 20px; border-top: 1px solid var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; line-height: 1.2; }
+.steps li::before { counter-increment: s; content: "0" counter(s); display: block; margin-bottom: 10px; font: 500 12px 'Inter'; color: var(--gold); }
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+.team .ph { aspect-ratio: 3 / 4; margin-bottom: 18px; --fb: linear-gradient(170deg, #2A3444, #14171C); filter: grayscale(.3); }
+.team h3 { font-size: 1.7rem; }
+.team p { font-size: 14px; }
+.posts { margin-top: 56px; }
+.posts article { display: grid; grid-template-columns: 160px 1fr auto; gap: 24px; align-items: baseline; padding: 30px 0; border-top: 1px solid var(--line); }
+.posts article:last-child { border-bottom: 1px solid var(--line); }
+.posts small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.posts h3 { font-size: clamp(1.4rem, 2.6vw, 2rem); max-width: 26ch; }
+.posts em { font-size: 12px; font-style: normal; color: var(--gray); }
+.cta .wrap { text-align: center; }
+.cta h2, .cta p { margin-inline: auto; }
+.cta .btn { margin-top: 40px; }
+
+/* =========================
+   FOOTER
+========================= */
+.foot { background: #0E1013; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; padding-block: 56px; }
+.foot p { font-size: 13px; }
+.foot ul { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; }
+.foot a:hover { color: var(--gold); }
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 860px) {
+  .burger { display: block; }
+  .nav { display: none; position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad) 28px; background: var(--graphite); border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .nav .btn { margin-top: 20px; text-align: center; }
+  .hero .btn { display: block; margin: 0 0 12px; text-align: center; }
+  .hero .btn + .btn { margin-left: 0; }
+  .pillars, .split, .team { grid-template-columns: 1fr; }
+  .pillars li { border-right: 0; border-bottom: 1px solid var(--line); padding-inline: var(--pad); }
+  .split .ph { aspect-ratio: 4 / 3; order: -1; }
+  .areas li { grid-template-columns: 40px 1fr; }
+  .areas li p { grid-column: 2; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .posts article { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+
+</head>
+<body id="topo">
+
+<div class="demo">Projeto conceitual · Demonstração VELORA · Os botões de contato levam à VELORA <a href="velora.html#projetos">← Voltar ao portfólio</a></div>
+
+<header class="top">
+  <a class="logo" href="#topo">Almeida <i>&amp;</i> Torres</a>
+  <button class="burger" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav">
+    <a href="#escritorio">Escritório</a><a href="#atuacao">Atuação</a><a href="#equipe">Equipe</a><a href="#insights">Insights</a>
+    <a class="btn solid" data-wa href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="ph" style="--img:url(imagens/almeida-hero.jpg)" role="img" aria-label="Sala de reuniões de escritório corporativo com luz natural"></div>
+    <div class="wrap">
+      <span class="label">Advocacia Empresarial</span>
+      <h1>Decisões empresariais exigem segurança jurídica.</h1>
+      <p>A Almeida &amp; Torres atua ao lado de empresas e empresários na construção de soluções jurídicas estratégicas para decisões que importam.</p>
+      <div><a class="btn" href="#atuacao">Conheça nossa atuação</a><a class="btn solid" data-wa href="#contato">Fale com nosso escritório</a></div>
+    </div>
+  </section>
+
+  <ul class="pillars">
+    <li><h3>Estratégia</h3><p>Cada análise parte dos objetivos do negócio.</p></li>
+    <li><h3>Precisão</h3><p>Atenção aos detalhes que definem o risco.</p></li>
+    <li><h3>Confiança</h3><p>Discrição e clareza em cada conversa.</p></li>
+  </ul>
+
+  <section class="light" id="escritorio">
+    <div class="wrap split">
+      <div>
+        <span class="label">O escritório</span>
+        <h2>Direito empresarial pensado a partir do negócio.</h2>
+        <p>A atuação jurídica precisa compreender não apenas a legislação, mas também o contexto, os riscos e os objetivos de cada empresa.</p>
+        <p>A Almeida &amp; Torres trabalha com uma abordagem estratégica, buscando transformar questões jurídicas complexas em decisões mais claras.</p>
+      </div>
+      <div class="ph" style="--img:url(imagens/almeida-escritorio.jpg)" role="img" aria-label="Detalhe editorial do escritório: mesa, documentos e luz lateral"></div>
+    </div>
+  </section>
+
+  <section class="navy" id="atuacao">
+    <div class="wrap">
+      <span class="label">Áreas de atuação</span>
+      <h2>Seis frentes para decisões empresariais.</h2>
+      <ul class="areas">
+        <li><span>01</span><h3>Direito Societário</h3><p>Estruturação societária, acordos entre sócios e reorganizações.</p></li>
+        <li><span>02</span><h3>Contratos Empresariais</h3><p>Elaboração, revisão e negociação de contratos.</p></li>
+        <li><span>03</span><h3>Consultoria Empresarial</h3><p>Orientação jurídica para decisões e operações do dia a dia.</p></li>
+        <li><span>04</span><h3>Compliance</h3><p>Estruturação de práticas e processos para redução de riscos.</p></li>
+        <li><span>05</span><h3>M&amp;A</h3><p>Apoio jurídico em operações societárias e processos de aquisição.</p></li>
+        <li><span>06</span><h3>Contencioso Empresarial</h3><p>Atuação estratégica em disputas relacionadas à atividade empresarial.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="label">Diferencial</span>
+      <h2>Complexidade jurídica. Clareza para decidir.</h2>
+      <ol class="steps">
+        <li>Entender o negócio</li><li>Identificar riscos</li><li>Explicar cenários</li><li>Construir soluções</li><li>Acompanhar decisões</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="light" id="equipe">
+    <div class="wrap">
+      <span class="label">Equipe conceitual · Demonstração VELORA</span>
+      <h2>Pessoas que entendem de negócios.</h2>
+      <div class="team">
+        <div><div class="ph" style="--img:url(imagens/almeida-marina.jpg)" role="img" aria-label="Retrato editorial de Marina Almeida"></div><h3>Marina Almeida</h3><p>Sócia — Direito Empresarial</p></div>
+        <div><div class="ph" style="--img:url(imagens/almeida-rafael.jpg)" role="img" aria-label="Retrato editorial de Rafael Torres"></div><h3>Rafael Torres</h3><p>Sócio — Direito Societário</p></div>
+        <div><div class="ph" style="--img:url(imagens/almeida-clara.jpg)" role="img" aria-label="Retrato editorial de Clara Mendes"></div><h3>Clara Mendes</h3><p>Consultora — Contratos Empresariais</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights">
+    <div class="wrap">
+      <span class="label">Insights</span>
+      <h2>Insights para decisões empresariais.</h2>
+      <div class="posts">
+        <article><small>Contratos</small><h3>O que analisar antes de assinar um contrato empresarial?</h3><em>Exemplo editorial conceitual</em></article>
+        <article><small>Sócios</small><h3>Acordo de sócios: por que antecipar conflitos?</h3><em>Exemplo editorial conceitual</em></article>
+        <article><small>Riscos</small><h3>Como identificar riscos jurídicos em uma operação?</h3><em>Exemplo editorial conceitual</em></article>
+        <article><small>Estrutura</small><h3>Quando uma empresa deve revisar sua estrutura societária?</h3><em>Exemplo editorial conceitual</em></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="navy cta" id="contato">
+    <div class="wrap">
+      <span class="label">Contato</span>
+      <h2>Uma decisão importante merece uma análise cuidadosa.</h2>
+      <a class="btn solid" data-wa href="#contato">Falar com a Almeida &amp; Torres</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><a class="logo" href="#topo">Almeida <i>&amp;</i> Torres</a><p>Advocacia Empresarial</p></div>
+    <ul><li><a href="#escritorio">Escritório</a></li><li><a href="#atuacao">Atuação</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#insights">Insights</a></li><li><a href="#contato">Contato</a></li></ul>
+    <p>Projeto conceitual desenvolvido pela <a href="velora.html">VELORA</a>.</p>
+  </div>
+</footer>
+
+<script>
+/* Contatos da demonstração levam ao WhatsApp da VELORA */
+const nome = document.title.split(' — ')[0];
+const msg = `Olá! Vi o projeto conceitual ${nome} e quero um site assim.`;
+document.querySelectorAll('[data-wa]').forEach(a => {
+  a.href = `https://wa.me/5512991784230?text=${encodeURIComponent(msg)}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+});
+
+/* Menu mobile */
+const burger = document.querySelector('.burger');
+const nav = document.getElementById('nav');
+const setMenu = open => {
+  nav.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+};
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+</script>
+</body>
+</html>
