@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste das fotos — VELORA</title>
+<style>
+body{font:16px/1.6 system-ui,sans-serif;max-width:860px;margin:0 auto;padding:32px 20px;color:#111318;background:#F7F7F5}
+h1{font-size:1.6rem} h2{margin:32px 0 8px;font-size:1.1rem} p{color:#555}
+#resumo{padding:14px 18px;border-radius:8px;background:#fff;border:1px solid #ddd;font-weight:600}
+ul{list-style:none;padding:0} li{display:flex;gap:12px;padding:7px 0;border-top:1px solid #e3e3e0;font-size:14px}
+.ok{color:#1a7f37} .no{color:#b42318} .alt{color:#9a6700} code{background:#eceae4;padding:1px 6px;border-radius:4px}
+</style></head><body>
+<h1>Teste das fotos</h1>
+<p>Esta página confere se cada foto está na <b>mesma pasta</b> dela. Endereço desta página: <code id="onde"></code></p>
+<div id="resumo">Verificando...</div><div id="lista"></div>
+<script>
+const G = {"ALMEIDA-E-TORRES": ["almeida-hero.jpg", "almeida-escritorio.jpg", "almeida-marina.jpg", "almeida-rafael.jpg", "almeida-clara.jpg"], "VITTA-ODONTOLOGIA": ["vitta-hero.jpg", "vitta-clinica.jpg", "vitta-helena.jpg", "vitta-lucas.jpg", "vitta-marina.jpg"], "AXIS-ENGENHARIA": ["axis-hero.jpg", "axis-aurora.jpg", "axis-axis-one.jpg", "axis-logistico.jpg"], "POUSADA-VALE-SERENO": ["pousada-hero.jpg", "pousada-natureza.jpg", "pousada-externa.jpg", "pousada-jardim.jpg", "pousada-piscina.jpg", "pousada-convivencia.jpg", "pousada-cafe.jpg", "pousada-por-do-sol.jpg", "pousada-experiencia.jpg", "pousada-suite-1.jpg", "pousada-suite-2.jpg", "pousada-suite-3.jpg", "pousada-chale-1.jpg", "pousada-chale-2.jpg", "pousada-chale-3.jpg", "pousada-familia-1.jpg", "pousada-familia-2.jpg", "pousada-familia-3.jpg"]};
+const exts = ['.jpg','.jpeg','.png','.webp','.JPG','.JPEG','.PNG','.WEBP','.jpg.jpg','.jpeg.jpg','.png.jpg'];
+const load = u => new Promise(r => { const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = u + '?t=' + Date.now(); });
+async function conferir(nome) {
+  if (await load(nome)) return { ok: true };
+  const base = nome.replace(/\.jpg$/, '');
+  const cand = [base + ' (1).jpg'];
+  for (const e of exts) { cand.push(base + e, base[0].toUpperCase() + base.slice(1) + e); }
+  const hits = await Promise.all(cand.map(c => load(c).then(ok => ok ? c : null)));
+  return { ok: false, alt: hits.find(Boolean) };
+}
+document.getElementById('onde').textContent = location.href;
+(async () => {
+  let total = 0, certas = 0; const box = document.getElementById('lista');
+  for (const [grupo, nomes] of Object.entries(G)) {
+    const h = document.createElement('h2'); h.textContent = grupo; const ul = document.createElement('ul');
+    box.append(h, ul);
+    const res = await Promise.all(nomes.map(conferir));
+    nomes.forEach((n, i) => {
+      total++; const r = res[i], li = document.createElement('li');
+      if (r.ok) { certas++; li.innerHTML = '<span class="ok">✔</span> ' + n; }
+      else if (r.alt) li.innerHTML = '<span class="alt">≈</span> ' + n + ' <span class="alt">— existe com outro nome: <code>' + r.alt + '</code>. Renomeie para <code>' + n + '</code>.</span>';
+      else li.innerHTML = '<span class="no">✘</span> ' + n + ' <span class="no">— não encontrada nesta pasta</span>';
+      ul.append(li);
+    });
+  }
+  document.getElementById('resumo').textContent = certas + ' de ' + total + ' fotos encontradas.';
+})();
+</script></body></html>
