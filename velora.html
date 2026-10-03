@@ -150,10 +150,11 @@ strong { color: var(--graphite); font-weight: 600; }
 /* =========================
    PROJETOS
 ========================= */
-.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
 .thumb { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; }
 .proj .mock { transition: transform .7s var(--ease); }
 .proj:hover .mock { transform: scale(1.04); }
+.projects .mock { aspect-ratio: 16 / 10; }
 .p-meta { padding-top: 18px; }
 .p-meta small { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
 .p-meta h3 { margin: 6px 0 2px; font-size: 1.3rem; }
@@ -166,6 +167,7 @@ strong { color: var(--graphite); font-weight: 600; }
 .t-adv { --mbg: #14161C; --mfg: #F1ECE2; --mac: #B9A27A; }
 .t-odo { --mbg: #EAF4F2; --mfg: #123A3A; --mac: #2FA39A; }
 .t-eng { --mbg: #EEF1F6; --mfg: #0F1B33; --mac: #2F5BFF; }
+.t-pou { --mbg: #24392E; --mfg: #F3EBDD; --mac: #C0764A; }
 .mock.big { justify-content: space-between; aspect-ratio: 16 / 9; padding: clamp(20px, 4vw, 48px); }
 .mock.big::before { display: none; }
 .mock.big b { max-width: 14ch; font-size: clamp(1.6rem, 4.6vw, 3.6rem); }
@@ -190,27 +192,6 @@ strong { color: var(--graphite); font-weight: 600; }
 .points h3 { margin-bottom: 6px; }
 
 /* =========================
-   PLANOS
-========================= */
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 56px; border: 1px solid var(--line); }
-.plan { display: flex; flex-direction: column; gap: 22px; padding: 40px 32px; }
-.plan + .plan { border-left: 1px solid var(--line); }
-.plan.featured { background: var(--graphite); color: var(--offwhite); }
-.plan.featured p, .plan.featured li { color: #B4B7BE; }
-.plan.featured .btn { background: var(--offwhite); border-color: var(--offwhite); color: var(--graphite); }
-.plan.featured .btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-.plan h3 { display: flex; justify-content: space-between; align-items: center; font-size: 13px; letter-spacing: .16em; }
-.plan h3 small { font-size: 11px; letter-spacing: .04em; color: var(--accent); }
-.price { font-size: 2.3rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
-.price small { display: block; margin-bottom: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--gray); }
-.plan ul { display: grid; gap: 10px; flex: 1; }
-.plan li { position: relative; padding-left: 20px; font-size: 14px; color: var(--gray); }
-.plan li::before { content: ""; position: absolute; left: 0; top: .75em; width: 10px; height: 1px; background: var(--accent); }
-.terms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
-.terms strong { display: block; margin-bottom: 4px; font-size: 13px; }
-.terms p { font-size: 14px; }
-
-/* =========================
    CTA
 ========================= */
 .cta { background: var(--graphite); color: var(--offwhite); }
@@ -220,6 +201,9 @@ strong { color: var(--graphite); font-weight: 600; }
 .cta .actions { margin-top: 44px; align-items: center; gap: 28px; }
 .cta .btn-primary { background: var(--offwhite); border-color: var(--offwhite); color: var(--graphite); }
 .cta .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cta .next-note { max-width: 52ch; margin-top: 24px; color: #9A9DA5; }
+.cta .btn-ghost { border-color: rgba(255, 255, 255, .35); color: var(--offwhite); }
+.cta .btn-ghost:hover { border-color: var(--accent); color: #fff; }
 .cta .next { font-size: 13px; font-weight: 600; color: #9A9DA5; transition: color .2s; }
 .cta .next:hover { color: #fff; }
 
@@ -237,8 +221,6 @@ strong { color: var(--graphite); font-weight: 600; }
 @media (max-width: 960px) {
   .hero .container, .why { grid-template-columns: 1fr; }
   .grid-3, .projects, .steps { grid-template-columns: repeat(2, 1fr); }
-  .plans { grid-template-columns: 1fr; }
-  .plan + .plan { border-left: 0; border-top: 1px solid var(--line); }
   .svc { grid-template-columns: 48px 1fr; gap: 8px 16px; }
   .svc p { grid-column: 2; }
   .svc .go { display: none; }
@@ -257,12 +239,11 @@ strong { color: var(--graphite); font-weight: 600; }
   .strip li { padding-left: 16px; }
   .strip li:nth-child(odd) { border-left: 0; padding-left: 0; }
   .strip li:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .grid-3, .projects, .steps, .terms { grid-template-columns: 1fr; }
+  .grid-3, .projects, .steps { grid-template-columns: 1fr; }
   .grid-3 { gap: 36px; margin-top: 40px; }
   .steps { gap: 0; margin-top: 40px; padding-left: 20px; border-left: 1px solid var(--line); }
   .step { padding: 0 0 36px; border-top: 0; }
   .step::before { top: 6px; left: -24px; }
-  .plan { padding: 32px 24px; }
   .mock.big { aspect-ratio: 4 / 5; }
   .cta .actions { flex-direction: column; align-items: stretch; gap: 20px; }
   .cta .next { text-align: center; }
@@ -289,7 +270,6 @@ strong { color: var(--graphite); font-weight: 600; }
       <a href="#servicos">Serviços</a>
       <a href="#processo">Processo</a>
       <a href="#projetos">Projetos</a>
-      <a href="#planos">Planos</a>
       <a class="btn btn-primary btn-sm" data-wa href="https://wa.me/5512991784230">Falar conosco</a>
     </nav>
   </div>
@@ -421,42 +401,10 @@ strong { color: var(--graphite); font-weight: 600; }
           <div class="thumb"><div class="mock t-eng"><b>Projetos que movem ideias.</b><span class="m-btn"></span></div></div>
           <div class="p-meta"><small>Engenharia</small><h3>Axis Engenharia</h3><p>Apresentação corporativa</p></div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLANOS -->
-  <section class="section" id="planos" style="padding-top:0">
-    <div class="container">
-      <div class="reveal">
-        <p class="eyebrow">Planos</p>
-        <h2>Valores claros para cada momento da sua empresa.</h2>
-        <p class="sub">Cada projeto começa com uma conversa para entender o que faz sentido para você.</p>
-      </div>
-      <div class="plans reveal">
-        <div class="plan">
-          <h3>START</h3>
-          <div class="price"><small>Valor</small>R$ 900</div>
-          <ul><li>Até 4 páginas</li><li>Design responsivo</li><li>Botão de WhatsApp</li><li>Formulário de contato</li><li>Google Maps</li><li>Links sociais</li><li>Publicação</li></ul>
-          <a class="btn btn-ghost" data-wa="Olá! Quero saber mais sobre o plano START." href="https://wa.me/5512991784230">Quero o START</a>
-        </div>
-        <div class="plan featured">
-          <h3>PRO <small>Recomendado</small></h3>
-          <div class="price"><small>Valor</small>R$ 1.500</div>
-          <ul><li>Até 8 páginas</li><li>Design personalizado</li><li>WhatsApp e formulários</li><li>Portfólio</li><li>FAQ</li><li>SEO básico</li><li>Google Analytics</li><li>Otimização mobile</li></ul>
-          <a class="btn" data-wa="Olá! Quero saber mais sobre o plano PRO." href="https://wa.me/5512991784230">Quero o PRO</a>
-        </div>
-        <div class="plan">
-          <h3>CUSTOM</h3>
-          <div class="price"><small>A partir de</small>R$ 2.500</div>
-          <ul><li>Estrutura personalizada</li><li>Funcionalidades específicas</li><li>Integrações</li><li>SEO avançado</li><li>Copywriting</li><li>Mais páginas</li></ul>
-          <a class="btn btn-ghost" data-wa="Olá! Quero um orçamento para um projeto CUSTOM." href="https://wa.me/5512991784230">Pedir orçamento</a>
-        </div>
-      </div>
-      <div class="terms reveal">
-        <div><strong>Manutenção (opcional)</strong><p>A partir de R$ 100/mês.</p></div>
-        <div><strong>Pagamento</strong><p>50% na contratação e 50% na entrega.</p></div>
-        <div><strong>Prazo</strong><p>7–15 dias úteis, conforme o projeto e o envio dos materiais.</p></div>
+        <a class="proj reveal" href="pousada-vale-sereno.html">
+          <div class="thumb"><div class="mock t-pou"><b>Seu tempo merece um lugar especial.</b><span class="m-btn"></span></div></div>
+          <div class="p-meta"><small>Hospedagem</small><h3>Pousada Vale Sereno</h3><p>Experiência digital para hospedagem</p></div>
+        </a>
       </div>
     </div>
   </section>
@@ -466,8 +414,10 @@ strong { color: var(--graphite); font-weight: 600; }
     <div class="container reveal">
       <p class="eyebrow">Vamos conversar?</p>
       <h2>Seu negócio já existe.<br><span class="accent">Agora ele precisa de uma presença digital à altura.</span></h2>
+      <p class="next-note">A proposta é apresentada individualmente, depois de entender o seu negócio e as suas necessidades.</p>
       <div class="actions">
         <a class="btn btn-primary" href="https://wa.me/5512991784230" target="_blank" rel="noopener">Falar com a VELORA →</a>
+        <a class="btn btn-ghost" data-wa="Olá! Quero solicitar um orçamento para o meu site." href="https://wa.me/5512991784230">Solicitar orçamento</a>
       </div>
     </div>
   </section>

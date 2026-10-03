@@ -1,6 +1,6 @@
-# Fotografias dos 3 projetos
+# Fotografias dos 4 projetos
 
-Cada site já está pronto para receber as fotos: basta salvar os arquivos abaixo em `imagens/`
+Cada site já está pronto para receber as fotos: basta salvar os arquivos abaixo na mesma pasta dos arquivos .html (sem subpastas),
 com exatamente estes nomes. Enquanto não existirem, o site mostra um fundo de cor da própria marca.
 
 ## ALMEIDA-E-TORRES  (luz natural, sombras suaves, tons neutros, sem clichês jurídicos)
