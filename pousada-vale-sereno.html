@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pousada Vale Sereno — Hospedagem na Serra da Mantiqueira</title>
+<meta name="description" content="Chalés e suítes para descansar entre montanhas e natureza, na região da Serra da Mantiqueira e do Vale do Paraíba. Projeto conceitual da VELORA.">
+<meta property="og:title" content="Pousada Vale Sereno — Hospedagem na Serra da Mantiqueira">
+<meta property="og:description" content="Conforto, natureza e tranquilidade para desacelerar. Projeto conceitual da VELORA.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2324392E'/%3E%3Cpath d='M4 25l9-13 5 7 3-4 7 10z' fill='%23E9DFCB'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23C0764A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --green: #24392E; --olive: #6B7A4B; --sand: #E9DFCB; --off: #F8F5EE; --terra: #A8643F; --char: #2A2D28;
+  --line: rgba(36, 57, 46, .16); --pad: clamp(20px, 5vw, 64px);
+}
+
+/* =========================
+   RESET E BASE
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { font: 400 16px/1.7 'DM Sans', system-ui, sans-serif; background: var(--off); color: var(--char); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+p { max-width: 54ch; color: #5A6058; }
+button { font: inherit; color: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) var(--pad); }
+h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 500; line-height: 1.1; letter-spacing: -.01em; }
+h1 { max-width: 14ch; font-size: clamp(2.6rem, 6.4vw, 5.4rem); }
+h2 { max-width: 20ch; font-size: clamp(1.9rem, 4vw, 3.1rem); }
+.eyebrow { display: block; margin-bottom: 18px; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--terra); }
+.ph { background: var(--img, none) center / cover no-repeat, var(--fb, linear-gradient(150deg, #C9B994, #6B7A4B)); }
+.ph.d { --fb: linear-gradient(150deg, #6B7A4B, #24392E); }
+.ph.w { --fb: linear-gradient(150deg, #E9DFCB, #A8643F); }
+.btn { display: inline-block; padding: 15px 30px; background: none; border: 1px solid currentColor; border-radius: 99px; font-size: 14px; font-weight: 500; transition: background .3s, color .3s, border-color .3s, transform .3s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.solid { background: var(--terra); border-color: var(--terra); color: #fff; }
+.btn.solid:hover { background: var(--green); border-color: var(--green); }
+.btn.line:hover { background: #fff; border-color: #fff; color: var(--green); }
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s, transform .9s; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* =========================
+   TOPO E NAVEGAÇÃO
+========================= */
+.demo { padding: 8px var(--pad); background: var(--green); font-size: 12px; color: #D5DDD8; text-align: center; }
+.demo a { margin-left: 12px; color: #fff; text-decoration: underline; }
+.top { position: sticky; top: 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; height: 76px; padding: 0 var(--pad); background: rgba(248, 245, 238, .93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.logo { display: inline-flex; align-items: center; gap: 12px; font: 500 1.05rem 'Fraunces', serif; letter-spacing: .26em; color: var(--green); }
+.nav { display: flex; align-items: center; gap: 26px; font-size: 14px; }
+.nav a:not(.btn):hover { color: var(--terra); }
+.nav .btn { padding: 10px 20px; font-size: 13px; }
+.burger { display: none; padding: 10px; background: none; border: 0; font-size: 14px; font-weight: 500; }
+
+/* =========================
+   HERO
+========================= */
+.hero { position: relative; display: flex; align-items: flex-end; min-height: calc(100svh - 110px); overflow: hidden; color: #fff; }
+.hero .ph { position: absolute; inset: 0; animation: zoom 22s ease-out both;
+  --fb: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300V190l180-90 160 80 200-130 220 150 180-70 260 110v60z' fill='%23132118' fill-opacity='.75'/%3E%3C/svg%3E") bottom / 100% 42% no-repeat, linear-gradient(180deg, #E8C9A0, #B9916A 30%, #4C6A52 64%, #1F3327); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 30, 24, .15), rgba(20, 30, 24, .72)); }
+.hero .wrap { position: relative; z-index: 1; width: 100%; padding-block: 64px 72px; }
+.hero .wrap > * { animation: up 1s both; }
+.hero .wrap > :nth-child(2) { animation-delay: .15s; }
+.hero .wrap > :nth-child(3) { animation-delay: .3s; }
+.hero .wrap > :nth-child(4) { animation-delay: .45s; }
+.hero p { margin: 24px 0 36px; font-size: 1.15rem; color: #EDEAE0; }
+.hero .btn + .btn { margin-left: 10px; }
+.hero small { display: block; margin-top: 44px; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: #E9DFCB; }
+@keyframes up { from { opacity: 0; transform: translateY(18px); } }
+@keyframes zoom { from { transform: scale(1.07); } }
+
+/* =========================
+   SEÇÕES
+========================= */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 7vw, 100px); align-items: center; }
+.split .ph { aspect-ratio: 4 / 5; border-radius: 200px 200px 16px 16px; }
+.split p { margin-top: 22px; }
+.marks { display: grid; gap: 0; margin-top: 36px; }
+.marks li { padding: 14px 0; border-top: 1px solid var(--line); font: 500 1.15rem 'Fraunces', serif; color: var(--green); }
+.mosaic { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 260px; gap: 14px; margin-top: 48px; }
+.mosaic figure { position: relative; overflow: hidden; border-radius: 12px; }
+.mosaic .ph { position: absolute; inset: 0; transition: transform 1s; }
+.mosaic figure:hover .ph { transform: scale(1.05); }
+.mosaic figure:first-child { grid-row: span 2; }
+.mosaic figcaption { position: absolute; left: 16px; bottom: 14px; padding: 4px 12px; border-radius: 99px; background: rgba(248, 245, 238, .92); font-size: 12px; font-weight: 500; color: var(--green); }
+.more { margin-top: 28px; font: 500 1.05rem 'Fraunces', serif; color: var(--olive); }
+.rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+.room .ph { aspect-ratio: 4 / 3; border-radius: 12px; transition: transform .6s; }
+.room:hover .ph { transform: translateY(-4px); }
+.room h3 { margin: 20px 0 6px; font-size: 1.6rem; }
+.room p { font-size: 15px; }
+.room ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 22px; }
+.room li { padding: 4px 12px; border: 1px solid var(--line); border-radius: 99px; font-size: 12px; color: var(--green); }
+.room .btn { padding: 11px 22px; font-size: 13px; color: var(--green); }
+.room .btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
+.sand { background: var(--sand); }
+.exps { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; border-top: 1px solid rgba(36, 57, 46, .22); }
+.exps li { padding: 26px 20px 30px 0; border-bottom: 1px solid rgba(36, 57, 46, .22); font: 500 1.35rem 'Fraunces', serif; color: var(--green); }
+.note { margin-top: 24px; font-size: 14px; }
+.dark { background: var(--green); color: var(--off); }
+.dark p { color: #C5CFC8; }
+.dark .eyebrow { color: #E0A47E; }
+.cafe ul { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; font-size: 14px; color: #E9DFCB; }
+.cafe .split .ph { border-radius: 16px; aspect-ratio: 5 / 4; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.tabs button { padding: 8px 18px; border: 1px solid var(--line); border-radius: 99px; background: none; font-size: 13px; }
+.tabs button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
+.gal { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; grid-auto-flow: dense; gap: 12px; margin-top: 28px; }
+.g { position: relative; overflow: hidden; border: 0; border-radius: 10px; transition: filter .4s; }
+.g:hover { filter: brightness(1.08); }
+.g::after { content: attr(data-t); position: absolute; inset: auto 0 0; padding: 28px 14px 12px; background: linear-gradient(transparent, rgba(20, 30, 24, .7)); font-size: 12px; text-align: left; color: #fff; opacity: 0; transition: opacity .3s; }
+.g:hover::after, .g:focus-visible::after { opacity: 1; }
+.g:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.g:nth-child(2), .g:nth-child(9) { grid-column: span 2; }
+.g:nth-child(4) { grid-row: span 2; }
+.gal.f .g { grid-column: auto !important; grid-row: auto !important; }
+.loc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.loc ul { margin: 28px 0; }
+.loc li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.map { position: relative; aspect-ratio: 5 / 4; border-radius: 16px; background: #DDE2D0; overflow: hidden; }
+.map svg { width: 100%; height: 100%; }
+.map span { position: absolute; left: 16px; top: 14px; padding: 4px 12px; border-radius: 99px; background: var(--off); font-size: 12px; }
+.faith { text-align: center; }
+.faith h2, .faith p { margin-inline: auto; }
+.faith p { margin-top: 20px; }
+.cta { text-align: center; }
+.cta h2, .cta p { margin-inline: auto; }
+.cta p { margin-top: 18px; }
+.cta .btn { margin-top: 34px; }
+.faq details { border-top: 1px solid var(--line); max-width: 820px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; font-weight: 500; color: var(--green); cursor: pointer; list-style: none; }
+.faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--terra); transition: transform .3s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 22px; }
+.faq h2 { margin-bottom: 36px; }
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); }
+.contact ul { margin-top: 28px; }
+.contact li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.contact b { display: inline-block; width: 110px; font-weight: 500; color: var(--green); }
+form { display: grid; gap: 16px; }
+label { display: grid; gap: 6px; font-size: 13px; font-weight: 500; color: var(--green); }
+input, textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: #fff; font: 400 15px 'DM Sans'; color: var(--char); }
+input:focus, textarea:focus { outline: 2px solid var(--olive); border-color: transparent; }
+form .btn { justify-self: start; cursor: pointer; }
+
+/* =========================
+   JANELAS (ACOMODAÇÃO E GALERIA)
+========================= */
+dialog { width: min(960px, 94vw); max-height: 92vh; margin: auto; padding: 0; border: 0; border-radius: 16px; background: var(--off); color: var(--char); overflow: auto; }
+dialog::backdrop { background: rgba(16, 26, 20, .78); }
+.x { position: absolute; top: 12px; right: 14px; z-index: 2; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--off); font-size: 22px; line-height: 1; }
+.acc-in { display: grid; grid-template-columns: 1.1fr 1fr; }
+.gal3 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 300px 150px; gap: 6px; padding: 6px; }
+.gal3 .ph { border-radius: 10px; }
+.gal3 .ph:first-child { grid-column: span 2; }
+.info { padding: 40px 32px; }
+.info h2 { font-size: 2rem; }
+.info h3 { margin: 22px 0 6px; font-size: 1.05rem; }
+.info p { font-size: 14px; margin-top: 10px; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+.facts li { padding: 8px 12px; border-radius: 8px; background: var(--sand); font-size: 13px; color: var(--green); }
+.info .btn { margin-top: 24px; }
+#lb { width: min(1100px, 96vw); background: #0F1A14; color: #fff; }
+#lb .ph { aspect-ratio: 16 / 10; }
+#lb .bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; font-size: 14px; }
+#lb .bar button { width: 40px; height: 40px; margin-left: 8px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 50%; background: none; font-size: 20px; }
+
+/* =========================
+   FOOTER
+========================= */
+.foot { background: var(--green); color: var(--off); }
+.foot .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; padding-block: 64px; }
+.foot .logo { color: var(--off); }
+.foot p { margin-top: 12px; font-size: 14px; color: #C5CFC8; }
+.foot ul { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
+.foot a:hover { color: var(--sand); }
+.foot .about { grid-column: 1 / -1; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, .14); }
+.foot .about .btn { margin-top: 18px; padding: 11px 24px; font-size: 13px; }
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 960px) {
+  .burger { display: block; }
+  .nav { display: none; position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad) 28px; background: var(--off); border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .nav .btn { margin-top: 20px; text-align: center; }
+  .split, .loc, .contact, .acc-in, .foot .wrap { grid-template-columns: 1fr; }
+  .split .ph { aspect-ratio: 4 / 3; border-radius: 16px; order: -1; }
+  .rooms { grid-template-columns: 1fr; }
+  .exps { grid-template-columns: 1fr 1fr; }
+  .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+  .mosaic figure:first-child { grid-column: span 2; grid-row: auto; }
+  .gal { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+  .g:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .g:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gal3 { grid-template-rows: 220px 110px; }
+}
+
+@media (max-width: 560px) {
+  .hero .btn { display: block; margin: 0 0 10px; text-align: center; }
+  .hero .btn + .btn { margin-left: 0; }
+  .facts { grid-template-columns: 1fr; }
+  .info { padding: 28px 20px; }
+  .contact b { display: block; width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+
+</head>
+<body id="topo">
+<!-- Projeto demonstrativo: o WhatsApp dos botões é ilustrativo e leva ao contato da VELORA. -->
+<div class="demo">Projeto conceitual — Pousada Vale Sereno · Os contatos levam à VELORA <a href="velora.html#projetos">← Voltar ao portfólio</a></div>
+
+<header class="top">
+  <a class="logo" href="#topo" aria-label="Vale Sereno">
+    <svg width="30" height="22" viewBox="0 0 32 24" aria-hidden="true"><path d="M1 23l10-15 6 8 4-5 10 12z" fill="currentColor"/><circle cx="25" cy="6" r="3" fill="#A8643F"/></svg>VALE SERENO
+  </a>
+  <button class="burger" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav" id="nav">
+    <a href="#topo">Início</a><a href="#pousada">A Pousada</a><a href="#acomodacoes">Acomodações</a><a href="#experiencias">Experiências</a><a href="#galeria">Galeria</a><a href="#localizacao">Localização</a><a href="#contato">Contato</a>
+    <a class="btn solid" data-wa href="#contato">Consultar disponibilidade</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="ph" style="--img:url(imagens/pousada-hero.jpg)" role="img" aria-label="Pousada entre montanhas e vegetação ao nascer do sol"></div>
+    <div class="wrap">
+      <h1>Seu tempo merece um lugar especial.</h1>
+      <p>Conforto, natureza e tranquilidade para você desacelerar e aproveitar cada momento.</p>
+      <div><a class="btn solid" data-wa href="#contato">Consultar disponibilidade</a><a class="btn line" href="#pousada">Conhecer a pousada</a></div>
+      <small>Serra da Mantiqueira • Natureza • Conforto</small>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Uma pausa para você</span>
+        <h2>Mais do que uma hospedagem. Um lugar para desacelerar.</h2>
+        <p>Entre montanhas, natureza e momentos tranquilos, a Vale Sereno foi pensada para quem quer sair da rotina e aproveitar o que realmente importa.</p>
+        <ul class="marks"><li>Natureza ao redor</li><li>Ambientes aconchegantes</li><li>Experiência personalizada</li></ul>
+      </div>
+      <div class="ph reveal" style="--img:url(imagens/pousada-natureza.jpg)" role="img" aria-label="Montanhas e vegetação ao redor da pousada"></div>
+    </div>
+  </section>
+
+  <section class="sand" id="pousada">
+    <div class="wrap">
+      <span class="eyebrow">A pousada</span>
+      <h2>Um lugar para se sentir em casa.</h2>
+      <div class="mosaic reveal">
+        <figure><div class="ph d" style="--img:url(imagens/pousada-externa.jpg)" role="img" aria-label="Área externa da pousada"></div><figcaption>Área externa</figcaption></figure>
+        <figure><div class="ph" style="--img:url(imagens/pousada-jardim.jpg)" role="img" aria-label="Jardim da pousada"></div><figcaption>Jardim</figcaption></figure>
+        <figure><div class="ph w" style="--img:url(imagens/pousada-piscina.jpg)" role="img" aria-label="Piscina cercada por área verde"></div><figcaption>Piscina</figcaption></figure>
+        <figure style="grid-column:span 2"><div class="ph d" style="--img:url(imagens/pousada-convivencia.jpg)" role="img" aria-label="Espaço de convivência com lareira"></div><figcaption>Espaços de convivência</figcaption></figure>
+      </div>
+      <p class="more">Café da manhã · Estacionamento · Áreas de descanso</p>
+    </div>
+  </section>
+
+  <section id="acomodacoes">
+    <div class="wrap">
+      <span class="eyebrow">Acomodações</span>
+      <h2>Escolha o seu refúgio.</h2>
+      <div class="rooms">
+        <article class="room reveal"><div class="ph" style="--img:url(imagens/pousada-suite-1.jpg)" role="img" aria-label="Suíte Vista Vale com varanda"></div><h3>Suíte Vista Vale</h3><p>Para acordar com a vista das montanhas.</p><ul><li>2 hóspedes</li><li>Cama queen</li><li>Varanda</li><li>Vista para as montanhas</li></ul><button class="btn" data-acc="0">Conhecer acomodação</button></article>
+        <article class="room reveal"><div class="ph w" style="--img:url(imagens/pousada-chale-1.jpg)" role="img" aria-label="Chalé Sereno com varanda privativa"></div><h3>Chalé Sereno</h3><p>Sala integrada e varanda só sua.</p><ul><li>Até 4 hóspedes</li><li>Cama queen</li><li>Sala integrada</li><li>Varanda privativa</li></ul><button class="btn" data-acc="1">Conhecer acomodação</button></article>
+        <article class="room reveal"><div class="ph d" style="--img:url(imagens/pousada-familia-1.jpg)" role="img" aria-label="Chalé Família com área externa"></div><h3>Chalé Família</h3><p>Mais espaço para dividir bons momentos.</p><ul><li>Até 5 hóspedes</li><li>Dois ambientes</li><li>Varanda</li><li>Área externa</li></ul><button class="btn" data-acc="2">Conhecer acomodação</button></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sand" id="experiencias">
+    <div class="wrap">
+      <span class="eyebrow">Experiências</span>
+      <h2>O destino também faz parte da experiência.</h2>
+      <p style="margin-top:18px">Descubra o que fazer na região.</p>
+      <ul class="exps reveal"><li>Trilhas</li><li>Cachoeiras</li><li>Passeios pela natureza</li><li>Gastronomia local</li><li>Turismo religioso</li><li>Visitas culturais</li><li>Momentos românticos</li><li>Descanso e contemplação</li></ul>
+      <p class="note">Sugestões do que a região oferece. Em um projeto real, a pousada define o que indica ou oferece.</p>
+    </div>
+  </section>
+
+  <section class="dark cafe">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Café da manhã</span>
+        <h2>Comece o dia sem pressa.</h2>
+        <p>Uma mesa posta com calma, para começar o dia com sabor e boa conversa, olhando para as montanhas.</p>
+        <ul><li>Pães</li><li>Frutas</li><li>Café</li><li>Sucos</li><li>Bolos</li><li>Itens regionais</li></ul>
+      </div>
+      <div class="ph w reveal" style="--img:url(imagens/pousada-cafe.jpg)" role="img" aria-label="Mesa de café da manhã com pães, frutas, bolos e café"></div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="wrap">
+      <span class="eyebrow">Galeria</span>
+      <h2>Veja como é estar aqui.</h2>
+      <div class="tabs" role="group" aria-label="Filtrar fotos">
+        <button data-f="all" aria-pressed="true">Todas</button><button data-f="pousada" aria-pressed="false">Pousada</button><button data-f="acom" aria-pressed="false">Acomodações</button><button data-f="natureza" aria-pressed="false">Natureza</button><button data-f="gastro" aria-pressed="false">Gastronomia</button><button data-f="exp" aria-pressed="false">Experiências</button>
+      </div>
+      <div class="gal">
+        <button class="g ph d" data-cat="pousada" data-t="Área externa" style="--img:url(imagens/pousada-externa.jpg)" aria-label="Ampliar: área externa"></button>
+        <button class="g ph w" data-cat="acom" data-t="Suíte Vista Vale" style="--img:url(imagens/pousada-suite-2.jpg)" aria-label="Ampliar: suíte"></button>
+        <button class="g ph" data-cat="natureza" data-t="Montanhas" style="--img:url(imagens/pousada-natureza.jpg)" aria-label="Ampliar: montanhas"></button>
+        <button class="g ph w" data-cat="gastro" data-t="Café da manhã" style="--img:url(imagens/pousada-cafe.jpg)" aria-label="Ampliar: café da manhã"></button>
+        <button class="g ph" data-cat="pousada" data-t="Jardim" style="--img:url(imagens/pousada-jardim.jpg)" aria-label="Ampliar: jardim"></button>
+        <button class="g ph d" data-cat="natureza" data-t="Pôr do sol" style="--img:url(imagens/pousada-por-do-sol.jpg)" aria-label="Ampliar: pôr do sol"></button>
+        <button class="g ph w" data-cat="exp" data-t="Momento de descanso" style="--img:url(imagens/pousada-experiencia.jpg)" aria-label="Ampliar: momento de descanso"></button>
+        <button class="g ph d" data-cat="acom" data-t="Chalé Sereno" style="--img:url(imagens/pousada-chale-2.jpg)" aria-label="Ampliar: chalé"></button>
+        <button class="g ph" data-cat="pousada" data-t="Piscina" style="--img:url(imagens/pousada-piscina.jpg)" aria-label="Ampliar: piscina"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sand" id="localizacao">
+    <div class="wrap loc">
+      <div class="reveal">
+        <span class="eyebrow">Localização</span>
+        <h2>Um refúgio perto de tudo que importa.</h2>
+        <ul>
+          <li>Localização demonstrativa, na região da Serra da Mantiqueira.</li>
+          <li>Cidades próximas: [a definir em um projeto real]</li>
+          <li>Pontos turísticos e tempos de deslocamento: [a definir]</li>
+        </ul>
+        <a class="btn solid" href="https://www.google.com/maps/search/Serra+da+Mantiqueira" target="_blank" rel="noopener">Como chegar</a>
+      </div>
+      <div class="map reveal" role="img" aria-label="Mapa ilustrativo com relevo de montanhas e marcador da pousada">
+        <span>Mapa ilustrativo</span>
+        <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#6B7A4B" stroke-opacity=".45"><path d="M-10 300C90 240 170 330 260 260S420 230 510 280"/><path d="M-10 250C90 190 170 280 260 210S420 180 510 230"/><path d="M-10 200C90 140 170 230 260 160S420 130 510 180"/><path d="M-10 150C90 90 170 180 260 110S420 80 510 130"/><path d="M-10 100C90 40 170 130 260 60S420 30 510 80"/></g><path d="M250 150a22 22 0 1 1 .1 0L250 200z" fill="#A8643F"/><circle cx="250" cy="128" r="8" fill="#F8F5EE"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="faith">
+    <div class="wrap">
+      <span class="eyebrow">Para cada motivo de viagem</span>
+      <h2>Um lugar para descansar depois da sua viagem.</h2>
+      <p>Para quem visita a região em momentos de fé, encontros e peregrinações, encontrar uma hospedagem confortável e bem localizada faz toda a diferença.</p>
+    </div>
+  </section>
+
+  <section class="dark cta">
+    <div class="wrap">
+      <h2>Pronto para viver dias mais tranquilos?</h2>
+      <p>Consulte nossas acomodações, veja as opções disponíveis e fale conosco.</p>
+      <a class="btn solid" data-wa href="#contato">Consultar disponibilidade</a>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap">
+      <h2>Perguntas frequentes</h2>
+      <details><summary>Quais são os tipos de acomodação?</summary><p>Suíte e chalés para diferentes perfis de viagem. Veja os detalhes na seção Acomodações.</p></details>
+      <details><summary>A pousada aceita crianças?</summary><p>Resposta demonstrativa: em um projeto real, aqui entra a política de crianças da pousada.</p></details>
+      <details><summary>Possui estacionamento?</summary><p>Resposta demonstrativa: informações sobre estacionamento são definidas pela pousada.</p></details>
+      <details><summary>O café da manhã está incluso?</summary><p>Resposta demonstrativa: aqui a pousada informa o que está incluso na hospedagem.</p></details>
+      <details><summary>Possui Wi-Fi?</summary><p>Resposta demonstrativa: a pousada informa a disponibilidade e as áreas com internet.</p></details>
+      <details><summary>Como funciona o check-in?</summary><p>Resposta demonstrativa: horários e orientações de chegada são definidos pela pousada.</p></details>
+      <details><summary>Aceita animais?</summary><p>Resposta demonstrativa: a política para animais é definida pela pousada.</p></details>
+      <details><summary>Como consultar disponibilidade?</summary><p>Pelo botão Consultar disponibilidade, que abre uma conversa no WhatsApp, ou pelo formulário de contato.</p></details>
+      <details><summary>Quais são as formas de pagamento?</summary><p>Resposta demonstrativa: as formas de pagamento são informadas pela pousada.</p></details>
+    </div>
+  </section>
+
+  <section class="sand" id="contato">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Contato</span>
+        <h2>Fale com a Vale Sereno.</h2>
+        <ul>
+          <li><b>WhatsApp</b>(00) 00000-0000 · demonstrativo</li>
+          <li><b>Telefone</b>(00) 0000-0000 · demonstrativo</li>
+          <li><b>E-mail</b>contato@valesereno.exemplo</li>
+          <li><b>Instagram</b>@valesereno · demonstrativo</li>
+          <li><b>Localização</b>Localização demonstrativa</li>
+        </ul>
+      </div>
+      <form id="form">
+        <label>Nome<input name="nome" required autocomplete="name"></label>
+        <label>E-mail<input name="email" type="email" required autocomplete="email"></label>
+        <label>Telefone<input name="tel" type="tel" autocomplete="tel"></label>
+        <label>Mensagem<textarea name="msg" rows="4" required></textarea></label>
+        <button class="btn solid" type="submit">Enviar mensagem</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><a class="logo" href="#topo">VALE SERENO</a><p>Um refúgio para desacelerar.</p></div>
+    <ul><li><a href="#pousada">A Pousada</a></li><li><a href="#acomodacoes">Acomodações</a></li><li><a href="#experiencias">Experiências</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#localizacao">Localização</a></li><li><a href="#contato">Contato</a></li><li>Instagram</li></ul>
+    <div class="about">
+      <p>Projeto conceitual desenvolvido pela <a href="velora.html">VELORA</a>. Um exemplo de como uma pousada pode transformar sua presença digital em uma experiência visual, clara e convidativa.</p>
+      <a class="btn line" data-wa="Olá! Vi o projeto conceitual da Pousada Vale Sereno e quero um projeto assim." href="#contato">Quero um projeto assim</a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="acc" aria-label="Detalhes da acomodação"><button class="x" aria-label="Fechar">×</button><div class="acc-in"><div class="gal3"></div><div class="info"></div></div></dialog>
+<dialog id="lb" aria-label="Foto ampliada"><button class="x" aria-label="Fechar">×</button><div class="ph"></div><div class="bar"><span id="cap"></span><span><button id="prev" aria-label="Foto anterior">‹</button><button id="next" aria-label="Próxima foto">›</button></span></div></dialog>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* WhatsApp ilustrativo: leva ao contato da VELORA (projeto demonstrativo) */
+const WA = 'https://wa.me/5512991784230';
+const DEF = 'Olá! Gostaria de consultar a disponibilidade da Pousada Vale Sereno.';
+const link = m => `${WA}?text=${encodeURIComponent(m)}`;
+const setWa = () => document.querySelectorAll('[data-wa]').forEach(a => {
+  a.href = link(a.dataset.wa || DEF); a.target = '_blank'; a.rel = 'noopener';
+});
+setWa();
+
+/* Menu mobile */
+const burger = document.querySelector('.burger'), nav = document.getElementById('nav');
+const setMenu = o => { nav.classList.toggle('open', o); burger.setAttribute('aria-expanded', o); };
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+
+/* Elementos aparecendo ao rolar */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Janela de acomodação (dados demonstrativos) */
+const ACC = [
+  { n: 'Suíte Vista Vale', s: 'suite', d: 'Uma suíte pensada para casais, com varanda voltada para as montanhas.', f: ['2 hóspedes', 'Cama queen', 'Banheiro privativo', 'Varanda com vista'], a: ['Ar-condicionado', 'Wi-Fi', 'Roupa de cama', 'Frigobar'] },
+  { n: 'Chalé Sereno', s: 'chale', d: 'Sala integrada e varanda privativa para dias de descanso.', f: ['Até 4 hóspedes', 'Cama queen', 'Banheiro privativo', 'Varanda privativa'], a: ['Sala integrada', 'Wi-Fi', 'Roupa de cama', 'Espaço para refeições leves'] },
+  { n: 'Chalé Família', s: 'familia', d: 'Dois ambientes e área externa para a família toda.', f: ['Até 5 hóspedes', 'Dois ambientes', 'Banheiro privativo', 'Varanda e área externa'], a: ['Wi-Fi', 'Roupa de cama', 'Estacionamento', 'Espaço ao ar livre'] }
+];
+const acc = document.getElementById('acc');
+document.querySelectorAll('[data-acc]').forEach(b => b.addEventListener('click', () => {
+  const a = ACC[b.dataset.acc];
+  acc.querySelector('.gal3').innerHTML = [1, 2, 3].map(i =>
+    `<div class="ph ${i == 2 ? 'w' : 'd'}" style="--img:url(imagens/pousada-${a.s}-${i}.jpg)" role="img" aria-label="${a.n}, foto ${i}"></div>`).join('');
+  acc.querySelector('.info').innerHTML = `<span class="eyebrow">Acomodação</span><h2>${a.n}</h2><p>${a.d}</p>
+    <ul class="facts">${a.f.map(x => `<li>${x}</li>`).join('')}</ul>
+    <h3>Comodidades</h3><p>${a.a.join(' · ')}</p>
+    <h3>Regras básicas</h3><p>Ilustrativo: horários de check-in e check-out e políticas de crianças e animais são definidos pela pousada.</p>
+    <a class="btn solid" data-wa="Olá! Gostaria de consultar a disponibilidade: ${a.n}, Pousada Vale Sereno." href="#contato">Consultar disponibilidade</a>`;
+  setWa(); acc.showModal();
+}));
+
+/* Galeria: filtros e lightbox */
+const gal = document.querySelector('.gal'), items = [...gal.children];
+const lb = document.getElementById('lb'), lbPh = lb.querySelector('.ph');
+let vis = [], cur = 0;
+const show = i => {
+  cur = (i + vis.length) % vis.length;
+  const g = vis[cur];
+  lbPh.setAttribute('style', g.getAttribute('style'));
+  lbPh.className = 'ph ' + (g.classList.contains('w') ? 'w' : g.classList.contains('d') ? 'd' : '');
+  lbPh.setAttribute('role', 'img'); lbPh.setAttribute('aria-label', g.dataset.t);
+  document.getElementById('cap').textContent = g.dataset.t;
+};
+items.forEach(g => g.addEventListener('click', () => {
+  vis = items.filter(x => !x.hidden); show(vis.indexOf(g)); lb.showModal();
+}));
+document.getElementById('prev').addEventListener('click', () => show(cur - 1));
+document.getElementById('next').addEventListener('click', () => show(cur + 1));
+lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+const tabs = document.querySelectorAll('.tabs button');
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => x.setAttribute('aria-pressed', x === t));
+  gal.classList.toggle('f', t.dataset.f !== 'all');
+  items.forEach(g => g.hidden = t.dataset.f !== 'all' && g.dataset.cat !== t.dataset.f);
+}));
+
+/* Fechar janelas: botão × ou clique fora */
+document.querySelectorAll('dialog').forEach(d => {
+  d.querySelector('.x').addEventListener('click', () => d.close());
+  d.addEventListener('click', e => { if (e.target === d) d.close(); });
+});
+
+/* Formulário demonstrativo: abre o WhatsApp com a mensagem preenchida */
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  window.open(link(`Olá! Sou ${f.get('nome')} (${f.get('email')}${f.get('tel') ? ', ' + f.get('tel') : ''}). ${f.get('msg')}`), '_blank', 'noopener');
+});
+</script>
+</body>
+</html>
